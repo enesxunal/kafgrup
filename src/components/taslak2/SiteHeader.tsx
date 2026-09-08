@@ -10,11 +10,10 @@ import { cn } from "@/lib/cn";
 const contents = [
   { href: "#giris", label: "01 · Editörden" },
   { href: "#hikaye-1", label: "02 · Ürün hikâyeleri" },
-  { href: "#indeks", label: "03 · Ürün aileleri" },
+  { href: "#indeks", label: "03 · Ürün indeksi" },
   { href: "#fikirden", label: "04 · Fikirden ürüne" },
   { href: "#tesis", label: "05 · Tesis notu" },
-  { href: "#gunluk", label: "06 · Fuar günlüğü" },
-  { href: "#katalog", label: "07 · Katalog / teklif" },
+  { href: "#katalog", label: "06 · Katalog / teklif" },
 ] as const;
 
 export function SiteHeader() {

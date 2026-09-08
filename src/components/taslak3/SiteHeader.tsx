@@ -12,10 +12,8 @@ const nav = [
   { href: "#sistemler", label: "Sistemler" },
   { href: "#kalite", label: "Kalite" },
   { href: "#kapasite", label: "Kapasite" },
-  { href: "#global", label: "Global" },
   { href: "#oem", label: "OEM" },
-  { href: "#fuarlar", label: "Fuarlar" },
-  { href: "#iletisim", label: "İletişim" },
+  { href: "#global", label: "Global" },
 ] as const;
 
 export function SiteHeader() {
@@ -76,7 +74,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <a
-            href="#iletisim"
+            href="#global"
             className="hidden border border-[#E08000] bg-[#E08000] px-3.5 py-2 text-[11px] font-semibold tracking-[0.16em] text-[#070B16] uppercase transition hover:bg-[#c66d00] hover:border-[#c66d00] sm:inline-flex"
           >
             Teklif al
@@ -118,7 +116,7 @@ export function SiteHeader() {
             ))}
           </nav>
           <a
-            href="#iletisim"
+            href="#global"
             className="mt-8 inline-flex w-full items-center justify-center border border-[#E08000] bg-[#E08000] px-4 py-3.5 text-xs font-semibold tracking-[0.2em] text-[#070B16] uppercase"
             onClick={() => setOpen(false)}
           >

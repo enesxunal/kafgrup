@@ -7,11 +7,11 @@ import { Menu, X } from "lucide-react";
 import { company } from "@/data/company";
 
 const navItems = [
-  { href: "#kanit", label: "Kanıt" },
-  { href: "#ag", label: "Ağ" },
-  { href: "#hatlar", label: "Hatlar" },
+  { href: "#kanit", label: "Üretim gücü" },
+  { href: "#urunler", label: "Ürün aileleri" },
   { href: "#kalite", label: "Kalite" },
-  { href: "#ortaklik", label: "Ortaklık" },
+  { href: "#oem", label: "OEM" },
+  { href: "#iletisim", label: "İletişim" },
 ] as const;
 
 export function SiteHeader() {
