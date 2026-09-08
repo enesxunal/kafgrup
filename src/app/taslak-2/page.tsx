@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 export default function Taslak2Page() {
   return (
     <>
+      <ConceptBar />
       <SiteHeader />
-      <main className="pb-concept">
+      <main>
         <HomeSections />
       </main>
       <SiteFooter />
-      <ConceptBar />
     </>
   );
 }
