@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --kaf-orange: #e08000;
+  --kaf-orange-deep: #c66d00;
+  --kaf-navy: #1a1f4d;
+  --kaf-ink: #12141c;
+  --kaf-muted: #5c6478;
+  --kaf-line: #e6e8ee;
+  --kaf-paper: #f6f7f9;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-kaf-orange: var(--kaf-orange);
+  --color-kaf-orange-deep: var(--kaf-orange-deep);
+  --color-kaf-navy: var(--kaf-navy);
+  --color-kaf-ink: var(--kaf-ink);
+  --color-kaf-muted: var(--kaf-muted);
+  --color-kaf-line: var(--kaf-line);
+  --color-kaf-paper: var(--kaf-paper);
+  --font-sans: var(--font-sora);
+  --font-display: var(--font-sora);
+  --font-serif: var(--font-fraunces);
+  --font-tech: var(--font-space);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--kaf-ink);
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img:not([data-nimg="fill"]) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--kaf-orange);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Safe space for mobile concept bar */
+.pb-concept {
+  padding-bottom: 4.5rem;
+}
+
+@media (min-width: 1024px) {
+  .pb-concept {
+    padding-bottom: 0;
+  }
+}
+
+.product-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f7;
+}
+
+.product-frame img,
+.product-frame [data-nimg] {
+  object-fit: contain !important;
 }

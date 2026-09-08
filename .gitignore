@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local review exports
+/review-pack-v2/
+/review-pack-v3/
+/kaf-grup-review-pack-*.zip
