@@ -8,10 +8,9 @@ import { company } from "@/data/company";
 import { cn } from "@/lib/cn";
 
 const nav = [
-  { href: "#veri", label: "Veri" },
-  { href: "#sistemler", label: "Sistemler" },
+  { href: "#sistemler", label: "Üretim" },
   { href: "#kalite", label: "Kalite" },
-  { href: "#kapasite", label: "Kapasite" },
+  { href: "#kapasite", label: "Ürün sistemleri" },
   { href: "#oem", label: "OEM" },
   { href: "#global", label: "Global" },
 ] as const;
@@ -26,105 +25,51 @@ export function SiteHeader() {
       if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
+    const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
+      document.body.style.overflow = previous;
     };
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#070B16]/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:h-[4.25rem] sm:px-6 lg:px-8">
-        <Link
-          href="/taslak-3"
-          className="relative z-[51] flex shrink-0 items-center gap-3"
-          onClick={() => setOpen(false)}
-        >
-          <Image
-            src={company.logo}
-            alt="KAF Grup"
-            width={148}
-            height={28}
-            className="h-6 w-auto brightness-0 invert sm:h-7"
-            priority
-            unoptimized
-          />
-          <span className="hidden h-5 w-px bg-white/15 lg:block" aria-hidden />
-          <span className="hidden text-[10px] tracking-[0.28em] text-white/45 uppercase lg:block">
-            Industrial Systems
-          </span>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0b0c]/96 text-white backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-5 px-5 sm:px-8 lg:h-[4.5rem] lg:px-12">
+        <Link href="/taslak-3" className="relative z-[51] flex items-center gap-4" onClick={() => setOpen(false)}>
+          <Image src={company.logo} alt="KAF Grup" width={150} height={28} className="h-6 w-auto brightness-0 invert" priority unoptimized />
+          <span className="hidden border-l border-white/15 pl-4 text-[9px] tracking-[0.24em] text-white/35 uppercase lg:block">Industrial Systems</span>
         </Link>
 
-        <nav
-          className="hidden items-center gap-0.5 xl:flex"
-          aria-label="Ana navigasyon"
-        >
+        <nav aria-label="Ana navigasyon" className="hidden items-center gap-7 lg:flex">
           {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="px-2.5 py-2 text-[11px] font-medium tracking-[0.14em] text-white/65 uppercase transition hover:text-[#E08000]"
-            >
+            <a key={item.href} href={item.href} className="text-[11px] font-medium tracking-[0.08em] text-white/55 transition hover:text-white">
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <a
-            href="#global"
-            className="hidden border border-[#E08000] bg-[#E08000] px-3.5 py-2 text-[11px] font-semibold tracking-[0.16em] text-[#070B16] uppercase transition hover:bg-[#c66d00] hover:border-[#c66d00] sm:inline-flex"
-          >
-            Teklif al
-          </a>
-          <button
-            type="button"
-            className="inline-flex size-10 items-center justify-center border border-white/15 text-white xl:hidden"
-            aria-expanded={open}
-            aria-controls={panelId}
-            aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
+        <div className="flex items-center gap-3">
+          <a href="#global" className="hidden border-b border-[#e58a1b] pb-1 text-[11px] font-semibold tracking-[0.08em] text-[#e58a1b] sm:inline-flex">İş ortaklığı ↗</a>
+          <button type="button" aria-expanded={open} aria-controls={panelId} aria-label={open ? "Menüyü kapat" : "Menüyü aç"} onClick={() => setOpen((v) => !v)} className="relative z-[51] inline-flex size-10 items-center justify-center border border-white/15 lg:hidden">
+            {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
         </div>
       </div>
 
-      <div
-        id={panelId}
-        className={cn(
-          "fixed inset-0 z-40 bg-[#070B16]/96 xl:hidden",
-          open ? "block" : "hidden",
-        )}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobil menü"
-      >
-        <div className="flex h-full flex-col px-6 pb-10 pt-24">
-          <nav className="flex flex-col gap-1" aria-label="Mobil navigasyon">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="border-b border-white/10 py-4 text-sm font-medium tracking-[0.18em] text-white/85 uppercase transition hover:text-[#E08000]"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
+      <div id={panelId} className={cn("fixed inset-0 z-40 bg-[#0a0b0c] lg:hidden", open ? "block" : "hidden")} role="dialog" aria-modal="true" aria-label="Mobil menü">
+        <div className="flex h-full flex-col px-5 pb-8 pt-24 sm:px-8">
+          <p className="text-[10px] tracking-[0.2em] text-[#e58a1b] uppercase">Industrial navigation</p>
+          <nav className="mt-6 border-t border-white/12" aria-label="Mobil navigasyon">
+            {nav.map((item, index) => (
+              <a key={item.href} href={item.href} className="flex items-center justify-between border-b border-white/12 py-5 text-lg font-medium text-white/85" onClick={() => setOpen(false)}>
+                <span>{item.label}</span><span className="text-xs text-white/25">0{index + 1}</span>
               </a>
             ))}
           </nav>
-          <a
-            href="#global"
-            className="mt-8 inline-flex w-full items-center justify-center border border-[#E08000] bg-[#E08000] px-4 py-3.5 text-xs font-semibold tracking-[0.2em] text-[#070B16] uppercase"
-            onClick={() => setOpen(false)}
-          >
-            Teklif al
+          <a href={`mailto:${company.contact.email}`} className="mt-auto flex items-center justify-between border-t border-white/12 pt-5 text-sm text-[#e58a1b]" onClick={() => setOpen(false)}>
+            <span>{company.contact.email}</span><span>↗</span>
           </a>
-          <p className="mt-auto text-xs tracking-wide text-white/40">
-            {company.contact.phones[0]} · {company.hq}
-          </p>
         </div>
       </div>
     </header>
