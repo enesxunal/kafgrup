@@ -8,9 +8,9 @@ import { company } from "@/data/company";
 import { cn } from "@/lib/cn";
 
 const nav = [
-  { href: "#sistemler", label: "Üretim" },
+  { href: "#uretim", label: "Üretim" },
+  { href: "#sistemler", label: "Ürünler" },
   { href: "#kalite", label: "Kalite" },
-  { href: "#kapasite", label: "Ürün sistemleri" },
   { href: "#oem", label: "OEM" },
   { href: "#global", label: "Global" },
 ] as const;
