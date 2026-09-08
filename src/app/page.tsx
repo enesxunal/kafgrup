@@ -1,246 +1,99 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Factory,
-  Globe2,
-  Layers3,
-  Search,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { company } from "@/data/company";
 import { drafts } from "@/data/presentation";
-import { company, metrics } from "@/data/company";
-import { advantages } from "@/data/presentation-advantages";
-
-const objectives = [
-  "KAF Grup’un üretim gücünü dijitalde daha premium ve güvenilir göstermek",
-  "Ürün, marka ve kategori yapısını ziyaretçinin daha hızlı keşfetmesini sağlamak",
-  "İhracat ve OEM / Private Label kabiliyetlerini ayrı bir B2B değer önerisine dönüştürmek",
-  "Mobil, SEO ve çoklu dil altyapısını yeni sitenin temeline yerleştirmek",
-];
 
 const scope = [
-  { icon: Layers3, title: "Bilgi mimarisi", text: "Kurumsal, ürün, kategori, OEM, ihracat, haber ve iletişim akışlarının yeniden kurgulanması." },
-  { icon: Search, title: "Ürün keşfi", text: "Kategori → ürün → marka ilişkisini sadeleştiren, teklif talebine bağlanan keşif akışı." },
-  { icon: Globe2, title: "Global iletişim", text: "50+ ülkeye ihracat, tesisler ve kalite belgelerini güven katmanına dönüştüren anlatım." },
-  { icon: Factory, title: "OEM / Private Label", text: "Üretim kabiliyeti, süreç ve teklif toplama alanlarını ayrı bir dönüşüm hattında sunma." },
-  { icon: ShieldCheck, title: "Teknik temel", text: "Responsive yapı, performans, teknik SEO, schema ve TR/EN genişleme planı." },
-  { icon: Sparkles, title: "Marka deneyimi", text: "KAF Grup’u katalog sitesi yerine modern bir medikal üretici markası olarak konumlandırma." },
+  "Kurumsal web sitesi bilgi mimarisi ve kullanıcı akışı",
+  "Ana sayfa ile ürün / kategori sayfalarının tasarım sistemi",
+  "OEM / Private Label ve ihracat odaklı teklif toplama akışları",
+  "Mobil, tablet ve masaüstü uyumlu arayüz",
+  "Türkçe / İngilizce içerik yapısına uygun sayfa mimarisi",
+  "Yayına hazır performans, erişilebilirlik ve temel SEO altyapısı",
 ];
 
-const approachDetails = [
-  {
-    tone: "Global B2B · kurumsal · güven odaklı",
-    focus: "İhracat, üretim altyapısı ve kurumsal itibar",
-    fit: "Satın alma ekipleri ve distribütörler için güçlü",
-  },
-  {
-    tone: "Premium · editoryal · ürün hikâyesi",
-    focus: "Ürün gamı, marka algısı ve keşif deneyimi",
-    fit: "KAF Grup’u daha çağdaş ve ayrışan göstermek için en dengeli yaklaşım",
-  },
-  {
-    tone: "Teknik · koyu · endüstriyel",
-    focus: "GMP, kalite, tesis, Ar-Ge ve OEM kabiliyeti",
-    fit: "Teknik güven ve üretim gücünü öne çıkarmak için güçlü",
-  },
-] as const;
+const outcomes = [
+  { n: "01", t: "Daha güçlü ilk izlenim", d: "KAF Grup’un üretim kapasitesi, ihracat gücü ve kalite standardı ilk ekranda anlaşılır." },
+  { n: "02", t: "Daha kolay ürün keşfi", d: "Ziyaretçi ürünleri uzun listelerde kaybolmadan ihtiyacına göre keşfeder." },
+  { n: "03", t: "Daha nitelikli talepler", d: "Distribütörlük, OEM ve kurumsal satın alma talepleri doğru sayfalardan yönlendirilir." },
+];
 
-const process = ["Yön seçimi", "Bilgi mimarisi", "UI sistemi", "İçerik uyarlama", "Responsive geliştirme", "SEO + yayın hazırlığı"];
+const phases = [
+  ["01", "Tasarım yönü seçimi", "Bu sunumdaki üç yaklaşımdan biri seçilir ve marka dili kesinleştirilir."],
+  ["02", "Sayfa sistemi", "Seçilen yöne göre ana sayfa, ürün, kategori, kurumsal ve OEM sayfaları tasarlanır."],
+  ["03", "İçerik ve geliştirme", "Gerçek ürün içerikleri, görseller ve iki dil yapısı uygulanır; mobil deneyim tamamlanır."],
+  ["04", "Kontrol ve yayın", "Son kontroller, performans iyileştirmeleri ve yayın hazırlığı tamamlanır."],
+];
 
 export default function PresentationPage() {
   return (
-    <div className="min-h-screen bg-[#f3f4f7] text-kaf-ink">
-      <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f3f4f7]/90 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-[1380px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
-          <Image src={company.logo} alt="KAF Grup" width={150} height={28} className="h-6 w-auto" priority unoptimized />
-          <div className="flex items-center gap-5 text-sm text-kaf-muted">
-            <a href="#kapsam" className="hidden transition hover:text-kaf-ink sm:inline">Kapsam</a>
-            <a href="#yaklasimlar" className="hidden transition hover:text-kaf-ink sm:inline">Yaklaşımlar</a>
-            <Link href="/teknik-yapi" className="transition hover:text-kaf-orange">Teknik yapı</Link>
+    <main className="bg-[#f4f1eb] text-[#161616]">
+      <section className="border-b border-black/15">
+        <div className="mx-auto max-w-[1240px] px-5 py-6 sm:px-8 lg:px-10">
+          <div className="flex items-center justify-between gap-6">
+            <Image src={company.logo} alt="KAF Grup" width={150} height={24} className="h-6 w-auto" priority unoptimized />
+            <p className="text-xs tracking-[0.18em] text-black/45 uppercase">Web sitesi yenileme teklifi · 2026</p>
           </div>
         </div>
-      </header>
+      </section>
 
-      <main>
-        <section className="relative overflow-hidden border-b border-black/5 bg-[#eceff3]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_10%,rgba(224,128,0,0.18),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.55),transparent)]" />
-          <div className="relative mx-auto grid w-full max-w-[1380px] gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-10 lg:py-28">
-            <div className="max-w-4xl">
-              <p className="text-xs font-semibold tracking-[0.2em] text-kaf-orange uppercase">Dijital dönüşüm sunumu · 2026</p>
-              <h1 className="mt-5 max-w-4xl text-4xl leading-[1.02] font-semibold tracking-[-0.04em] sm:text-5xl lg:text-[4.65rem]">
-                KAF Grup’un dijital vitrini, üretim gücü kadar güçlü olmalı.
-              </h1>
-              <p className="mt-6 max-w-2xl text-base leading-7 text-kaf-muted sm:text-lg">
-                Bu çalışma yalnızca yeni bir ana sayfa tasarımı değil; ürün keşfi, global güven, OEM iletişimi ve teknik altyapıyı tek bir dijital sistemde yeniden kurgulama önerisidir.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#yaklasimlar" className="inline-flex items-center gap-2 bg-kaf-ink px-5 py-3.5 text-sm font-medium text-white transition hover:bg-kaf-orange">3 tasarım yönünü incele <ArrowRight className="size-4" /></a>
-                <a href="#kapsam" className="inline-flex items-center gap-2 border border-kaf-line bg-white px-5 py-3.5 text-sm font-medium">Proje kapsamı</a>
-              </div>
-            </div>
-            <div className="self-end border border-black/8 bg-white/75 p-6 backdrop-blur sm:p-8">
-              <p className="text-xs font-semibold tracking-[0.18em] text-kaf-muted uppercase">Bugünkü temel</p>
-              <div className="mt-6 grid grid-cols-2 gap-px bg-kaf-line">
-                {metrics.map((item) => (
-                  <div key={item.id} className="bg-white p-4 sm:p-5">
-                    <p className="text-2xl font-semibold tracking-tight sm:text-3xl">{item.value}<span className="ml-1 text-sm text-kaf-orange">{item.unit}</span></p>
-                    <p className="mt-1 text-xs leading-5 text-kaf-muted">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-5 text-sm leading-6 text-kaf-muted">
-                Üretim kapasitesi, sektör tecrübesi, ekip ve ihracat ağı güçlü. Yeni sitenin görevi bu verileri güven ve talebe dönüştürmek.
-              </p>
-            </div>
+      <section className="border-b border-black/15">
+        <div className="mx-auto grid min-h-[74svh] max-w-[1240px] items-end gap-12 px-5 py-14 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-20">
+          <div className="lg:col-span-8">
+            <p className="text-sm font-semibold tracking-[0.18em] text-[#d97800] uppercase">KAF Grup dijital dönüşüm</p>
+            <h1 className="mt-5 max-w-4xl text-5xl leading-[0.96] font-semibold tracking-[-0.055em] sm:text-6xl lg:text-[5.2rem]">
+              Güçlü bir üretici için,<br />daha güçlü bir dijital vitrin.
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-black/60 sm:text-xl">
+              Bu çalışma yalnızca ana sayfanın görünümünü yenilemeyi değil; KAF Grup’un ürünlerini, üretim gücünü ve global iş ortaklığı fırsatlarını daha anlaşılır ve daha güven veren bir web deneyimine dönüştürmeyi amaçlıyor.
+            </p>
           </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-[1380px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.18em] text-kaf-orange uppercase">01 · Stratejik çerçeve</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Neyi değiştiriyoruz?</h2>
-              <p className="mt-4 max-w-xl leading-7 text-kaf-muted">Amaç mevcut içeriği yalnızca daha şık göstermek değil; ziyaretçinin KAF Grup’u nasıl algıladığını ve nasıl aksiyon aldığını yeniden tasarlamak.</p>
-            </div>
-            <div className="grid gap-px bg-kaf-line sm:grid-cols-2">
-              {objectives.map((item, index) => (
-                <div key={item} className="bg-white p-6 sm:p-7">
-                  <span className="text-xs font-semibold text-kaf-orange">0{index + 1}</span>
-                  <p className="mt-8 text-lg leading-7 font-medium">{item}</p>
-                </div>
-              ))}
-            </div>
+          <div className="lg:col-span-4 lg:pb-2">
+            <p className="text-sm leading-relaxed text-black/50">Sunum kapsamında üç farklı tasarım yönü hazırlanmıştır. Amaç “hangisi daha güzel?” sorusundan çok, KAF Grup’un dijitalde nasıl konumlanması gerektiğine birlikte karar vermektir.</p>
           </div>
-        </section>
-        <section id="kapsam" className="border-y border-black/5 bg-[#11141d] text-white">
-          <div className="mx-auto w-full max-w-[1380px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div>
-                <p className="text-xs font-semibold tracking-[0.18em] text-[#f0a02c] uppercase">02 · Proje kapsamı</p>
-                <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Sadece tasarım değil, sürdürülebilir bir dijital yapı.</h2>
-              </div>
-              <p className="max-w-xl text-sm leading-6 text-white/60">Sunumdaki üç konsept, aynı kapsamın farklı görsel ve deneyim yönleridir. Seçilen yaklaşım canlı site mimarisine uygulanır.</p>
-            </div>
-            <div className="mt-10 grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-              {scope.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <article key={item.title} className="bg-[#11141d] p-6 sm:p-7">
-                    <Icon className="size-5 text-[#f0a02c]" aria-hidden />
-                    <h3 className="mt-8 text-lg font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-white/55">{item.text}</p>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section id="yaklasimlar" className="mx-auto w-full max-w-[1380px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold tracking-[0.18em] text-kaf-orange uppercase">03 · Tasarım yönleri</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Üç farklı marka karakteri.</h2>
-            <p className="mt-4 leading-7 text-kaf-muted">Buradaki seçim “hangi renk daha güzel?” sorusu değil. KAF Grup’un dijitalde hangi karakterle algılanacağına dair stratejik bir yön seçimidir.</p>
-          </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {drafts.map((draft, index) => {
-              const detail = approachDetails[index];
-              return (
-                <article key={draft.id} className="overflow-hidden border border-kaf-line bg-white">
-                  <div className="relative aspect-[16/10] bg-[#e5e7ec]">
-                    <Image src={draft.previewImage} alt={`${draft.title} ön izleme`} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover object-top" />
-                    <div className="absolute inset-x-0 top-0 flex items-start justify-between p-3">
-                      <span className="bg-white/95 px-2.5 py-1 text-[11px] font-semibold tracking-[0.12em] uppercase">{draft.label}</span>
-                      {draft.recommended ? <span className="bg-kaf-orange px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-white uppercase">Önerimiz</span> : null}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold tracking-tight">{draft.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-kaf-muted">{draft.summary}</p>
-                    <dl className="mt-6 space-y-4 border-t border-kaf-line pt-5 text-sm">
-                      <div><dt className="text-xs font-semibold tracking-[0.1em] text-kaf-muted uppercase">Karakter</dt><dd className="mt-1 font-medium">{detail.tone}</dd></div>
-                      <div><dt className="text-xs font-semibold tracking-[0.1em] text-kaf-muted uppercase">Ana odak</dt><dd className="mt-1 leading-6">{detail.focus}</dd></div>
-                      <div><dt className="text-xs font-semibold tracking-[0.1em] text-kaf-muted uppercase">En uygun kullanım</dt><dd className="mt-1 leading-6">{detail.fit}</dd></div>
-                    </dl>
-                    <Link href={draft.href} className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-kaf-ink px-4 py-3.5 text-sm font-medium text-white transition hover:bg-kaf-orange">Canlı taslağı incele <ArrowUpRight className="size-4" /></Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-        <section className="border-y border-black/5 bg-white">
-          <div className="mx-auto grid w-full max-w-[1380px] gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[.85fr_1.15fr] lg:px-10">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.18em] text-kaf-orange uppercase">04 · Önerilen yön</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Taslak 2 neden önde?</h2>
-              <p className="mt-4 max-w-xl leading-7 text-kaf-muted">KAF Grup’un teknik güvenilirliğini kaybetmeden ürünleri ve markaları daha çağdaş, premium ve hatırlanabilir bir dijital deneyime dönüştürdüğü için.</p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {["Ürünleri yalnız listelemek yerine hikâyeleştiriyor", "Kurumsal rakiplerden görsel olarak daha fazla ayrışıyor", "Mobilde keşif ve içerik tüketimine uygun bir ritim kuruyor", "Canlı sitede kurumsal güven bloklarıyla kolayca dengelenebilir"].map((item) => (
-                <div key={item} className="flex gap-3 border border-kaf-line bg-[#f8f8fa] p-5">
-                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center bg-kaf-orange text-white"><Check className="size-3.5" /></span>
-                  <p className="text-sm leading-6">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-[1380px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.18em] text-kaf-orange uppercase">05 · Teknik kazanımlar</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Tasarımın arkasındaki sistem.</h2>
-              <p className="mt-4 leading-7 text-kaf-muted">Sunum noindex kalır. Seçilen yön canlı siteye taşınırken performans, içerik modeli, SEO ve ölçüm altyapısıyla birlikte ele alınır.</p>
-              <Link href="/teknik-yapi" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-kaf-orange">Teknik yapıyı incele <ArrowRight className="size-4" /></Link>
-            </div>
-            <div className="grid gap-px bg-kaf-line sm:grid-cols-2">
-              {advantages.slice(0, 8).map((item) => (
-                <div key={item.id} className="bg-white p-5 sm:p-6">
-                  <h3 className="font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-kaf-muted">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="border-t border-black/5 bg-[#eceff3]">
-          <div className="mx-auto w-full max-w-[1380px] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-            <div className="max-w-3xl">
-              <p className="text-xs font-semibold tracking-[0.18em] text-kaf-orange uppercase">06 · Sonraki adım</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">Bir yön seçilir, sonra gerçek site derinleşir.</h2>
-              <p className="mt-4 leading-7 text-kaf-muted">Bu sunum konsept seçimi içindir. Seçimden sonra sayfa mimarisi, ürün detayları, içerik, responsive davranışlar ve canlı yayın altyapısı tek yön üzerinde detaylandırılır.</p>
-            </div>
-            <ol className="mt-10 grid gap-px bg-[#cfd4dc] sm:grid-cols-2 lg:grid-cols-6">
-              {process.map((item, index) => (
-                <li key={item} className="bg-white p-5">
-                  <span className="text-xs font-semibold text-kaf-orange">{String(index + 1).padStart(2, "0")}</span>
-                  <p className="mt-8 text-sm font-semibold">{item}</p>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-10 flex flex-col justify-between gap-6 border border-kaf-line bg-white p-6 sm:flex-row sm:items-center sm:p-8">
-              <div>
-                <p className="text-sm font-semibold">Karar noktası</p>
-                <p className="mt-1 text-sm leading-6 text-kaf-muted">Taslakları inceleyin; seçilen yaklaşımı birlikte gerçek ürün ve kurumsal site mimarisine dönüştürelim.</p>
-              </div>
-              <a href="#yaklasimlar" className="inline-flex shrink-0 items-center justify-center gap-2 bg-kaf-orange px-5 py-3.5 text-sm font-semibold text-white">Tasarımlara dön <ArrowRight className="size-4" /></a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="bg-[#11141d] text-white">
-        <div className="mx-auto flex w-full max-w-[1380px] flex-col justify-between gap-5 px-5 py-7 sm:flex-row sm:items-center sm:px-8 lg:px-10">
-          <Image src={company.logoAlt} alt="KAF Grup" width={140} height={28} className="h-6 w-auto" unoptimized />
-          <p className="text-xs leading-5 text-white/45">Dijital dönüşüm ve tasarım yönü sunumu · Arama motorlarına kapalı müşteri çalışma alanı</p>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <section className="border-b border-black/15 bg-white">
+        <div className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4"><p className="text-sm font-semibold tracking-[0.16em] text-[#d97800] uppercase">Projenin amacı</p><h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Web sitesi yalnızca güzel görünmemeli; iş geliştirmeye hizmet etmeli.</h2></div>
+            <div className="lg:col-span-8"><div className="divide-y divide-black/12 border-y border-black/12">{outcomes.map((item)=><article key={item.n} className="grid gap-3 py-7 sm:grid-cols-[72px_1fr] sm:gap-5"><span className="text-sm font-semibold text-[#d97800]">{item.n}</span><div><h3 className="text-xl font-semibold">{item.t}</h3><p className="mt-2 max-w-2xl text-base leading-relaxed text-black/55">{item.d}</p></div></article>)}</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-black/15 bg-[#ebe6dd]">
+        <div className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4"><p className="text-sm font-semibold tracking-[0.16em] text-[#d97800] uppercase">Kapsam</p><h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Teslim edilecek yapı</h2><p className="mt-4 text-black/55">Seçilen tasarım yönü, tek bir ana sayfa olarak bırakılmayacak; gerçek kurumsal site sistemine dönüştürülecek.</p></div>
+            <ul className="grid gap-px bg-black/15 sm:grid-cols-2 lg:col-span-8">{scope.map((item)=><li key={item} className="flex gap-3 bg-[#f4f1eb] p-5"><Check className="mt-0.5 size-4 shrink-0 text-[#d97800]"/><span className="text-sm leading-relaxed">{item}</span></li>)}</ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="tasarimlar" className="border-b border-black/15 bg-[#111] text-white">
+        <div className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+          <p className="text-sm font-semibold tracking-[0.16em] text-[#e58a1b] uppercase">Üç farklı tasarım yönü</p>
+          <div className="mt-4 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between"><h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Aynı sitenin üç rengi değil; üç farklı marka yaklaşımı.</h2><p className="max-w-sm text-sm leading-relaxed text-white/50">Her taslak farklı bir hedef kitle, içerik sıralaması ve görsel karakter üzerinden tasarlandı.</p></div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">{drafts.map((draft,i)=><article key={draft.id} className="group border border-white/15 bg-[#181818]"><div className="relative aspect-[4/3] overflow-hidden bg-[#222]"><Image src={draft.previewImage} alt={draft.title} fill sizes="(max-width:1024px) 100vw, 33vw" className="object-cover object-top transition duration-500 group-hover:scale-[1.02]"/><span className="absolute top-4 left-4 bg-black/75 px-3 py-1.5 text-xs tracking-[0.14em] uppercase">0{i+1}</span></div><div className="p-6"><p className="text-xs tracking-[0.15em] text-[#e58a1b] uppercase">{draft.label}</p><h3 className="mt-2 text-2xl font-semibold">{draft.title}</h3><p className="mt-3 text-sm leading-relaxed text-white/55">{draft.summary}</p><Link href={draft.href} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">Taslağı incele <ArrowRight className="size-4"/></Link></div></article>)}</div>
+        </div>
+      </section>
+
+      <section className="border-b border-black/15 bg-white">
+        <div className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-12"><div className="lg:col-span-4"><p className="text-sm font-semibold tracking-[0.16em] text-[#d97800] uppercase">Önerimiz</p><h2 className="mt-4 text-4xl font-semibold tracking-tight">Taslak 2:<br/>Editoryal Ürün Dünyası</h2></div><div className="lg:col-span-8"><p className="max-w-2xl text-xl leading-relaxed text-black/70">KAF Grup’un geniş ürün gamını, üretim gücünü ve ihracat hikâyesini aynı sayfada boğmadan anlatabildiği için en dengeli yaklaşım olarak görüyoruz.</p><div className="mt-8 grid gap-4 sm:grid-cols-3">{["Ürünü merkeze alır","Kurumsal güveni korur","Rakiplerden daha kolay ayrışır"].map(x=><div key={x} className="border-t-2 border-[#d97800] pt-4 text-sm font-medium">{x}</div>)}</div></div></div>
+        </div>
+      </section>
+
+      <section className="bg-[#f4f1eb]">
+        <div className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+          <p className="text-sm font-semibold tracking-[0.16em] text-[#d97800] uppercase">Sonraki adımlar</p><h2 className="mt-4 text-4xl font-semibold tracking-tight">Seçimden yayına kadar</h2>
+          <div className="mt-10 grid gap-px bg-black/15 lg:grid-cols-4">{phases.map(([n,t,d])=><article key={n} className="bg-[#f4f1eb] p-6"><p className="text-sm font-semibold text-[#d97800]">{n}</p><h3 className="mt-5 text-lg font-semibold">{t}</h3><p className="mt-3 text-sm leading-relaxed text-black/55">{d}</p></article>)}</div>
+          <div className="mt-12 flex flex-col gap-5 border-t border-black/15 pt-8 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-sm text-black/45">Karar noktası</p><p className="mt-1 text-xl font-semibold">Önce tasarım yönünü birlikte seçelim.</p></div><a href="#tasarimlar" className="inline-flex items-center gap-2 bg-[#161616] px-5 py-3.5 text-sm font-semibold text-white">3 tasarımı karşılaştır <ArrowRight className="size-4"/></a></div>
+        </div>
+      </section>
+    </main>
   );
 }
