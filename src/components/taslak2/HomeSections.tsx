@@ -1,108 +1,124 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
-import { company } from "@/data/company";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { categories, products } from "@/data/products";
+import { company } from "@/data/company";
 import { fairs, oemContent } from "@/data/content";
 
-const selected = [products[3], products[0], products[12]];
+const featured = [products[2], products[0], products[7], products[12]];
 
 export function HomeSections() {
   return (
     <>
-      <section className="bg-[#f2eee6] text-[#171717]">
-        <div className="mx-auto flex min-h-[calc(100svh-7rem)] max-w-[1440px] flex-col px-5 py-7 sm:px-8 lg:max-h-[720px] lg:min-h-[580px] lg:px-12 lg:py-8">
-          <div className="grid gap-5 border-b border-black/15 pb-5 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-7">
-              <p className="text-[10px] tracking-[0.24em] text-[#c96e00] uppercase">KAF Product Review · Medical Portfolio</p>
-              <h1 className="mt-3 max-w-3xl font-[family-name:var(--font-fraunces)] text-[2.55rem] leading-[1.01] tracking-[-0.035em] sm:text-5xl lg:text-[3.7rem]">
-                Klinik ihtiyaçlara göre geliştirilmiş medikal ürün aileleri.
-              </h1>
+      <section className="bg-[#f4f0e8] text-[#171717]">
+        <div className="mx-auto grid min-h-[calc(100svh-7rem)] max-w-[1440px] grid-cols-1 border-x border-black/10 lg:grid-cols-[260px_1fr]">
+          <aside className="hidden border-r border-black/10 p-7 lg:flex lg:flex-col lg:justify-between">
+            <div>
+              <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Medical portfolio / 2026</p>
+              <p className="mt-5 text-sm leading-6 text-black/50">KAF Grup ürünlerini kategori, kullanım alanı ve marka ailesi üzerinden keşfedin.</p>
             </div>
-            <div className="lg:col-span-4 lg:col-start-9">
-              <p className="max-w-md text-sm leading-6 text-black/55">
-                Dezenfeksiyon, medikal jel ve hasta bakım ürünleri; kullanım alanlarına göre düzenlenen seçili bir portföy içinde sunulur.
-              </p>
+            <div className="space-y-2 text-xs text-black/45">
+              <p>06 ürün ailesi</p>
+              <p>50+ ihracat ülkesi</p>
+              <p>OEM / Private Label</p>
             </div>
-          </div>
+          </aside>
 
-          <div className="mt-5 grid flex-1 gap-3 lg:grid-cols-[1.45fr_.8fr_.8fr] lg:grid-rows-2">
-            <figure className="relative min-h-[280px] overflow-hidden bg-[#ded5c7] lg:row-span-2 lg:min-h-0">
-              <Image src={selected[0].image} alt={selected[0].name} fill priority sizes="(max-width:1024px) 100vw, 46vw" className="object-contain p-8 sm:p-12 lg:p-10" />
-              <figcaption className="absolute inset-x-4 top-4 flex justify-between text-[10px] tracking-[0.16em] uppercase">
-                <span>{selected[0].brand}</span><span>Featured product</span>
-              </figcaption>
-              <div className="absolute inset-x-4 bottom-4 border-t border-black/15 pt-3 sm:inset-x-6">
-                <p className="font-[family-name:var(--font-fraunces)] text-xl leading-tight sm:text-2xl">{selected[0].name}</p>
+          <div className="flex min-w-0 flex-col">
+            <div className="grid gap-6 border-b border-black/10 px-5 py-7 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-8">
+              <div className="lg:col-span-7">
+                <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">KAF Medical Collection</p>
+                <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-[3.8rem]">
+                  Ürünleri hızlı keşfetmek için tasarlanmış dijital portföy.
+                </h1>
               </div>
-            </figure>
-
-            <figure className="relative min-h-[210px] overflow-hidden bg-[#cbdad7] lg:min-h-0">
-              <Image src={selected[1].image} alt={selected[1].name} fill sizes="(max-width:1024px) 100vw, 24vw" className="object-contain p-7" />
-              <figcaption className="absolute left-4 top-4 text-[9px] tracking-[0.16em] uppercase">{selected[1].brand}</figcaption>
-            </figure>
-
-            <div className="flex min-h-[190px] flex-col justify-between bg-[#191919] p-5 text-white lg:min-h-0">
-              <p className="text-[9px] tracking-[0.18em] text-white/40 uppercase">Bu sayıda</p>
-              <div className="space-y-1 font-[family-name:var(--font-fraunces)] text-xl leading-tight">
-                <p>Ürün hikâyeleri</p><p>Ürün indeksi</p><p>OEM üretim</p>
+              <div className="flex items-end lg:col-span-4 lg:col-start-9">
+                <p className="max-w-md text-sm leading-6 text-black/55">Dezenfeksiyon, medikal jel ve hasta bakım ürünleri; satın alma ekiplerinin aradığı bilgiye doğrudan ulaşabileceği sade bir katalog yapısında.</p>
               </div>
             </div>
 
-            <div className="flex min-h-[190px] flex-col justify-between bg-[#d97700] p-5 lg:min-h-0">
-              <p className="text-[9px] tracking-[0.18em] uppercase">Editorial direction</p>
-              <p className="max-w-xs text-base font-medium leading-snug">Daha az kutu, daha az açıklama; daha güçlü ürün seçimi.</p>
-            </div>
+            <div className="grid flex-1 lg:grid-cols-[1.25fr_.75fr]">
+              <figure className="relative min-h-[360px] overflow-hidden border-b border-black/10 bg-[#ddd5c8] lg:min-h-0 lg:border-b-0 lg:border-r">
+                <Image src={featured[0].image} alt={featured[0].name} fill priority sizes="(max-width:1024px) 100vw, 60vw" className="object-contain p-10 sm:p-14 lg:p-16" />
+                <figcaption className="absolute inset-x-5 bottom-5 border-t border-black/15 pt-4 sm:inset-x-8 sm:bottom-7">
+                  <div className="flex items-center justify-between gap-4 text-[10px] tracking-[0.15em] text-black/45 uppercase"><span>{featured[0].brand}</span><span>Featured</span></div>
+                  <p className="mt-2 text-2xl font-semibold">{featured[0].name}</p>
+                </figcaption>
+              </figure>
 
-            <figure className="relative min-h-[210px] overflow-hidden bg-[#e4e0d8] lg:min-h-0">
-              <Image src={selected[2].image} alt={selected[2].name} fill sizes="(max-width:1024px) 100vw, 24vw" className="object-contain p-7" />
-            </figure>
+              <div className="grid grid-cols-2 lg:grid-cols-1">
+                {featured.slice(1, 3).map((item, index) => (
+                  <article key={item.id} className={`relative min-h-[220px] overflow-hidden border-b border-black/10 ${index === 0 ? "bg-[#dce8e5]" : "bg-[#171717] text-white"}`}>
+                    <Image src={item.image} alt={item.name} fill sizes="(max-width:1024px) 50vw, 35vw" className="object-contain p-8" />
+                    <span className={`absolute left-4 top-4 text-[9px] tracking-[0.16em] uppercase ${index === 0 ? "text-black/40" : "text-white/35"}`}>{item.brand}</span>
+                  </article>
+                ))}
+                <a href="#koleksiyonlar" className="col-span-2 flex min-h-[110px] items-center justify-between bg-[#c96f00] px-5 text-sm font-semibold lg:col-span-1">
+                  Tüm ürün ailelerini gör <ArrowRight className="size-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="giris" className="bg-white text-black">
-        <div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:py-20">
-          <div className="lg:col-span-3"><p className="text-[10px] tracking-[0.2em] text-[#c96e00] uppercase">Editoryal yaklaşım</p></div>
-          <div className="lg:col-span-6"><h2 className="font-[family-name:var(--font-fraunces)] text-3xl leading-tight sm:text-4xl">Her şeyi aynı anda söylemek yerine, doğru ürünü doğru sırada göstermek.</h2></div>
-          <div className="lg:col-span-3"><p className="text-sm leading-7 text-black/55">Üretim gücü ve kalite bilgisi kaybolmuyor; ürün keşfini kesmeden, ihtiyaç duyulan yerde devreye giriyor.</p></div>
+      <section id="koleksiyonlar" className="bg-white text-black">
+        <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-3">
+              <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Koleksiyonlar</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em]">Klinik ihtiyaca göre ürün aileleri.</h2>
+            </div>
+            <div className="lg:col-span-9">
+              <div className="border-t border-black/15">
+                {categories.map((item, index) => (
+                  <article key={item.id} className="grid gap-4 border-b border-black/15 py-5 sm:grid-cols-[44px_1fr_150px_28px] sm:items-center">
+                    <span className="text-xs text-[#b96100]">{String(index + 1).padStart(2, "0")}</span>
+                    <div><p className="text-[10px] tracking-[0.14em] text-black/35 uppercase">{item.brand}</p><h3 className="mt-1 text-lg font-semibold">{item.name}</h3><p className="mt-1 max-w-xl text-sm leading-5 text-black/45">{item.summary}</p></div>
+                    <div className="relative hidden h-20 bg-[#f2efe9] sm:block"><Image src={item.image} alt="" fill sizes="150px" className="object-contain p-3" /></div>
+                    <ArrowUpRight className="hidden size-4 text-black/30 sm:block" />
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="hikaye-1" className="bg-[#f2eee6] text-black">
-        <div className="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
-          <div className="flex items-end justify-between gap-6 border-b border-black/15 pb-5"><div><p className="text-[10px] tracking-[0.2em] text-[#c96e00] uppercase">Seçili ürünler</p><h2 className="mt-2 font-[family-name:var(--font-fraunces)] text-3xl sm:text-4xl">Üç farklı ürün, üç farklı kadraj.</h2></div><span className="hidden text-xs text-black/40 sm:block">01—03</span></div>
-          <div className="mt-8 grid gap-8 lg:grid-cols-12">
-            {selected.map((item, i) => (
-              <article key={item.id} className={i === 0 ? "lg:col-span-5" : i === 1 ? "lg:col-span-4 lg:pt-12" : "lg:col-span-3 lg:pt-24"}>
-                <div className={`relative overflow-hidden ${i === 0 ? "aspect-[4/5] bg-[#d8d0c5]" : i === 1 ? "aspect-square bg-[#c9d9d6]" : "aspect-[3/4] bg-white"}`}><Image src={item.image} alt={item.name} fill sizes="(max-width:1024px) 100vw, 40vw" className="object-contain p-8" /></div>
-                <p className="mt-4 text-[10px] tracking-[0.18em] text-[#c96e00] uppercase">0{i + 1} · {item.brand}</p>
-                <h3 className="mt-2 font-[family-name:var(--font-fraunces)] text-2xl leading-tight">{item.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-black/55">{item.summary}</p>
+      <section id="urunler" className="bg-[#151515] text-white">
+        <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
+          <div className="mb-10 flex flex-col gap-5 border-b border-white/12 pb-6 sm:flex-row sm:items-end sm:justify-between">
+            <div><p className="text-[10px] tracking-[0.2em] text-[#e58a1b] uppercase">Seçili ürünler</p><h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em]">Ürün bilgisini görselin gerisinde bırakmayan düzen.</h2></div>
+            <p className="max-w-sm text-sm leading-6 text-white/40">Büyük görsel alanlar, kısa ürün özeti ve marka ayrımı. Satın alma odaklı, sakin ve okunaklı.</p>
+          </div>
+          <div className="grid gap-px bg-white/10 lg:grid-cols-4">
+            {featured.map((item) => (
+              <article key={item.id} className="bg-[#151515]">
+                <div className="relative aspect-[4/5] bg-[#ece8df]"><Image src={item.image} alt={item.name} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-contain p-8" /></div>
+                <div className="p-5"><p className="text-[10px] tracking-[0.14em] text-[#e58a1b] uppercase">{item.brand}</p><h3 className="mt-2 text-lg font-semibold">{item.name}</h3><p className="mt-2 text-sm leading-5 text-white/40">{item.summary}</p></div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="indeks" className="bg-[#191919] text-white">
-        <div className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-          <div className="grid gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-4"><p className="text-[10px] tracking-[0.2em] text-[#f0a33e] uppercase">Ürün indeksi</p><h2 className="mt-4 font-[family-name:var(--font-fraunces)] text-4xl">Portföye hızlı erişim.</h2></div>
-            <div className="lg:col-span-8">{categories.map((item, i) => <article key={item.id} className="grid gap-3 border-t border-white/15 py-4 sm:grid-cols-[36px_1fr_auto] sm:items-center"><span className="text-xs text-[#f0a33e]">{String(i + 1).padStart(2, "0")}</span><div><h3 className="text-lg font-medium">{item.name}</h3><p className="mt-1 text-xs text-white/40">{item.brand}</p></div><ArrowUpRight className="hidden size-4 text-white/35 sm:block" /></article>)}</div>
+      <section id="oem" className="bg-[#c96f00] text-[#151515]">
+        <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[.9fr_1.1fr]">
+          <div className="relative min-h-[380px] bg-[#b96300] lg:min-h-[560px]"><Image src={oemContent.image} alt="KAF Grup OEM / Private Label" fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" /></div>
+          <div className="flex flex-col justify-between p-6 sm:p-10 lg:p-14">
+            <div><p className="text-[10px] tracking-[0.2em] uppercase">OEM / Private Label</p><h2 className="mt-5 max-w-xl text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Markanız için ürün geliştirme ve üretim.</h2><p className="mt-5 max-w-xl text-base leading-7 text-black/65">{oemContent.summary}</p></div>
+            <a href={`mailto:${company.contact.email}`} className="mt-10 inline-flex items-center gap-2 text-sm font-semibold">OEM görüşmesi başlat <ArrowUpRight className="size-4" /></a>
           </div>
         </div>
       </section>
 
-      <section id="fikirden" className="bg-[#d97700] text-[#171717]">
-        <div className="mx-auto grid max-w-[1440px] lg:grid-cols-2">
-          <div className="relative min-h-[340px] lg:min-h-[500px]"><Image src={oemContent.image} alt="KAF Grup OEM ve Private Label" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" /></div>
-          <div className="p-6 sm:p-10 lg:p-14"><p className="text-[10px] tracking-[0.2em] uppercase">OEM / Private Label</p><h2 className="mt-5 font-[family-name:var(--font-fraunces)] text-4xl leading-tight">Markanızın bir sonraki ürünü nasıl doğar?</h2><p className="mt-5 max-w-xl text-base leading-7 text-black/65">{oemContent.summary}</p><div className="mt-10 grid gap-5 sm:grid-cols-3">{["Ürün fikri", "Numune + onay", "Üretim + teslimat"].map((x,i)=><div key={x} className="border-t border-black/25 pt-4"><span className="text-xs">0{i+1}</span><p className="mt-6 font-semibold">{x}</p></div>)}</div></div>
+      <section id="global" className="bg-[#f4f0e8] text-black">
+        <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4"><p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Global görünürlük</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">Ürün portföyünün arkasında uluslararası sektör deneyimi.</h2></div>
+            <div className="grid gap-3 sm:grid-cols-3 lg:col-span-8">{fairs.slice(0,3).map((fair) => <figure key={fair.id}><div className="relative aspect-[4/3] overflow-hidden bg-[#ddd]"><Image src={fair.image} alt={fair.name} fill sizes="(max-width:768px) 100vw, 25vw" className="object-cover" /></div><figcaption className="mt-2 flex justify-between gap-3 text-xs"><strong>{fair.name}</strong><span className="text-black/40">{fair.location}</span></figcaption></figure>)}</div>
+          </div>
         </div>
       </section>
-
-      <section id="tesis" className="bg-white text-black"><div className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20"><div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><p className="text-[10px] tracking-[0.2em] text-[#c96e00] uppercase">Global temas</p><h2 className="mt-4 font-[family-name:var(--font-fraunces)] text-4xl">Ürün hikâyesinin arkasında gerçek sektör görünürlüğü.</h2></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:col-span-7">{fairs.slice(0,3).map(f=><figure key={f.id}><div className="relative aspect-square overflow-hidden bg-[#eee]"><Image src={f.image} alt={f.name} fill sizes="(max-width:640px) 50vw, 20vw" className="object-cover" /></div><figcaption className="mt-2 text-xs"><strong>{f.name}</strong><span className="ml-2 text-black/45">{f.location}</span></figcaption></figure>)}</div></div></div></section>
-
-      <section id="katalog" className="bg-[#f2eee6] text-black"><div className="mx-auto flex max-w-[1240px] flex-col gap-5 px-5 py-12 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-10"><div><p className="text-[10px] tracking-[0.2em] text-[#c96e00] uppercase">İletişim</p><h2 className="mt-3 font-[family-name:var(--font-fraunces)] text-3xl sm:text-4xl">Katalog, numune veya OEM görüşmesi.</h2></div><a href={`mailto:${company.contact.email}`} className="inline-flex items-center gap-2 text-sm font-semibold">{company.contact.email}<ArrowUpRight className="size-4" /></a></div></section>
     </>
   );
 }
