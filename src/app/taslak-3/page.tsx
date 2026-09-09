@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/taslak3/SiteFooter";
 import { HomeSections } from "@/components/taslak3/HomeSections";
 
 export const metadata: Metadata = {
-  title: "Taslak 3 — Endüstriyel Kalite",
+  title: "Taslak 3 — Global Üretim ve Çözümler",
   description:
-    "KAF Grup endüstriyel kalite taslağı: ürün yakın planları, GMP verileri ve üretim süreci.",
+    "KAF Grup global üretim ve çözümler taslağı: ürün aileleri, üretim kapasitesi, OEM ve uluslararası sektör deneyimi.",
   robots: { index: false, follow: false },
 };
 

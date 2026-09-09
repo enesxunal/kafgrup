@@ -3,14 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { company } from "@/data/company";
 
 const nav = [
-  { href: "#kanit", label: "Üretim" },
   { href: "#urunler", label: "Ürünler" },
-  { href: "#kalite", label: "Kalite" },
+  { href: "#uygulamalar", label: "Uygulamalar" },
+  { href: "#uretim", label: "Üretim" },
   { href: "#oem", label: "OEM" },
+  { href: "#kurumsal", label: "KAF Grup" },
 ] as const;
 
 export function SiteHeader() {
@@ -30,32 +31,39 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0b0b0b] text-white">
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between border-b border-white/10 px-5 sm:px-8 lg:px-12">
+    <header className="sticky top-0 z-50 border-b border-[#1b2430]/10 bg-white/95 text-[#172033] backdrop-blur-md">
+      <div className="mx-auto flex h-[4.5rem] max-w-[1440px] items-center justify-between gap-5 px-5 sm:px-8 lg:px-12">
         <Link href="/taslak-3" onClick={() => setOpen(false)} className="flex items-center gap-4">
-          <Image src={company.logo} alt="KAF Grup" width={145} height={24} className="h-5 w-auto brightness-0 invert" priority unoptimized />
-          <span className="hidden text-[9px] tracking-[0.18em] text-white/30 uppercase sm:block">Manufacturing / Türkiye</span>
+          <Image src={company.logo} alt="KAF Grup" width={150} height={26} className="h-6 w-auto" priority unoptimized />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Ana navigasyon">
-          {nav.map((item) => <a key={item.href} href={item.href} className="text-xs text-white/50 transition hover:text-white">{item.label}</a>)}
+          {nav.map((item) => (
+            <a key={item.href} href={item.href} className="text-sm font-medium text-[#172033]/65 transition hover:text-[#d97800]">
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          <a href={`mailto:${company.contact.email}`} className="hidden text-xs font-semibold text-[#e58a1b] sm:block">İletişim ↗</a>
-          <button type="button" className="inline-flex size-9 items-center justify-center border border-white/15 lg:hidden" aria-expanded={open} aria-controls={menuId} aria-label={open ? "Menüyü kapat" : "Menüyü aç"} onClick={() => setOpen((value) => !value)}>
+        <div className="flex items-center gap-3">
+          <button type="button" className="hidden size-9 items-center justify-center text-[#172033]/55 sm:inline-flex" aria-label="Ara">
+            <Search className="size-4" />
+          </button>
+          <a href={`mailto:${company.contact.email}`} className="hidden bg-[#172033] px-4 py-2.5 text-xs font-semibold text-white sm:inline-flex">İletişim</a>
+          <button type="button" className="inline-flex size-10 items-center justify-center border border-[#172033]/15 lg:hidden" aria-expanded={open} aria-controls={menuId} aria-label={open ? "Menüyü kapat" : "Menüyü aç"} onClick={() => setOpen((value) => !value)}>
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
         </div>
       </div>
 
       {open ? (
-        <div id={menuId} className="fixed inset-0 top-16 z-40 bg-[#0b0b0b] px-5 py-8 sm:px-8 lg:hidden">
-          <p className="text-[10px] tracking-[0.18em] text-[#e58a1b] uppercase">KAF Grup / Manufacturing</p>
-          <nav className="mt-6 border-t border-white/12">
-            {nav.map((item, index) => <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex items-center justify-between border-b border-white/12 py-5 text-xl text-white/90"><span>{item.label}</span><span className="text-xs text-white/25">0{index + 1}</span></a>)}
+        <div id={menuId} className="fixed inset-0 top-[4.5rem] z-40 bg-white px-5 py-8 sm:px-8 lg:hidden">
+          <nav className="border-t border-[#172033]/10">
+            {nav.map((item) => (
+              <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="block border-b border-[#172033]/10 py-5 text-xl font-medium text-[#172033]">{item.label}</a>
+            ))}
           </nav>
-          <a href={`mailto:${company.contact.email}`} className="mt-8 inline-block text-sm font-semibold text-[#e58a1b]">{company.contact.email} ↗</a>
+          <a href={`mailto:${company.contact.email}`} className="mt-8 inline-flex bg-[#d97800] px-4 py-3 text-sm font-semibold text-white">{company.contact.email}</a>
         </div>
       ) : null}
     </header>

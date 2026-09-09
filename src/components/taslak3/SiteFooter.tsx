@@ -3,87 +3,19 @@ import { company } from "@/data/company";
 
 export function SiteFooter() {
   return (
-    <footer
-      id="iletisim"
-      className="relative overflow-hidden border-t border-white/10 bg-[#050812] text-white"
-    >
-      <div className="pointer-events-none absolute inset-0 tech-grid opacity-30" aria-hidden />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#E08000]/70 to-transparent"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:px-8 lg:py-20">
+    <footer id="iletisim" className="border-t border-[#172033]/10 bg-[#f5f7f8] text-[#172033]">
+      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-14 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-16">
         <div className="lg:col-span-5">
-          <Image
-            src={company.logoAlt}
-            alt="KAF Grup"
-            width={180}
-            height={32}
-            className="h-8 w-auto"
-          />
-          <p className="mt-5 max-w-md text-sm leading-relaxed text-white/55">
-            {company.tagline}. GMP belgeli üretim altyapısı, temiz oda
-            standartları ve 50+ ülkeye uzanan tedarik ağı.
-          </p>
-          <p className="mt-6 text-[10px] tracking-[0.24em] text-[#E08000] uppercase">
-            SYS · HQ · IST
-          </p>
+          <Image src={company.logo} alt="KAF Grup" width={165} height={30} className="h-7 w-auto" />
+          <p className="mt-5 max-w-md text-sm leading-6 text-[#172033]/50">{company.tagline}. GMP belgeli üretim altyapısı, temiz oda standartları ve 50+ ülkeye uzanan tedarik ağı.</p>
         </div>
-
-        <div className="grid gap-10 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-3">
-          <div>
-            <p className="text-[10px] tracking-[0.22em] text-white/40 uppercase">
-              Merkez
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-white/75">
-              {company.contact.address}
-            </p>
-          </div>
-          <div>
-            <p className="text-[10px] tracking-[0.22em] text-white/40 uppercase">
-              İletişim
-            </p>
-            <ul className="mt-3 space-y-2 text-sm text-white/75">
-              {company.contact.phones.map((phone) => (
-                <li key={phone}>
-                  <a href={`tel:${phone.replace(/\s/g, "")}`} className="hover:text-[#E08000]">
-                    {phone}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href={`mailto:${company.contact.email}`}
-                  className="hover:text-[#E08000]"
-                >
-                  {company.contact.email}
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-[10px] tracking-[0.22em] text-white/40 uppercase">
-              Tesisler
-            </p>
-            <ul className="mt-3 space-y-3 text-sm text-white/75">
-              {company.facilities.map((f) => (
-                <li key={f.city}>
-                  <span className="font-medium text-white">{f.city}</span>
-                  <span className="mt-0.5 block text-xs text-white/45">{f.role}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="grid gap-8 sm:grid-cols-3 lg:col-span-7">
+          <div><p className="text-[10px] font-semibold tracking-[0.16em] text-[#d97800] uppercase">İletişim</p><p className="mt-3 text-sm">{company.contact.email}</p><p className="mt-2 text-sm">{company.contact.phones[0]}</p></div>
+          <div><p className="text-[10px] font-semibold tracking-[0.16em] text-[#d97800] uppercase">Merkez</p><p className="mt-3 text-sm leading-6 text-[#172033]/55">{company.contact.address}</p></div>
+          <div><p className="text-[10px] font-semibold tracking-[0.16em] text-[#d97800] uppercase">Tesisler</p><div className="mt-3 space-y-2 text-sm">{company.facilities.map((facility) => <p key={facility.city}><strong>{facility.city}</strong><span className="ml-2 text-[#172033]/45">{facility.role}</span></p>)}</div></div>
         </div>
       </div>
-
-      <div className="relative border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-5 text-[11px] tracking-wide text-white/35 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>{company.legalName}</p>
-          <p>© {new Date().getFullYear()} · Taslak 3 — Endüstriyel Teknoloji</p>
-        </div>
-      </div>
+      <div className="border-t border-[#172033]/10"><div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-5 py-5 text-xs text-[#172033]/40 sm:flex-row sm:justify-between sm:px-8 lg:px-12"><p>{company.legalName}</p><p>© {new Date().getFullYear()} · KAF Grup</p></div></div>
     </footer>
   );
 }
