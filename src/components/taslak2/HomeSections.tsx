@@ -4,57 +4,60 @@ import { categories, products } from "@/data/products";
 import { company } from "@/data/company";
 import { fairs, oemContent } from "@/data/content";
 
-const featured = [products[2], products[0], products[7], products[12]];
+const heroProducts = [products[2], products[0], products[7], products[12]];
+const selected = [products[2], products[0], products[7]];
 
 export function HomeSections() {
   return (
     <>
-      <section className="bg-[#f4f0e8] text-[#171717]">
-        <div className="mx-auto grid min-h-[calc(100svh-7rem)] max-w-[1440px] grid-cols-1 border-x border-black/10 lg:grid-cols-[260px_1fr]">
-          <aside className="hidden border-r border-black/10 p-7 lg:flex lg:flex-col lg:justify-between">
+      <section className="bg-[#f6f4ef] text-[#171717]">
+        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-8 sm:px-8 lg:px-12 lg:pb-12 lg:pt-10">
+          <div className="grid gap-8 border-b border-black/10 pb-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <p className="text-[10px] font-semibold tracking-[0.2em] text-[#c76d00] uppercase">KAF Grup · Medical Products</p>
+              <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.06] tracking-[-0.04em] sm:text-5xl lg:text-[3.6rem]">
+                Hastane ve klinikler için geliştirilmiş medikal ürün portföyü.
+              </h1>
+            </div>
+            <div className="lg:col-span-4 lg:col-start-9">
+              <p className="max-w-md text-sm leading-6 text-black/55">
+                Dezenfeksiyon, medikal jel ve hasta bakım çözümleri; ürün ailesi, kullanım alanı ve marka bazında sade bir yapı içinde sunulur.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-7 grid gap-4 lg:grid-cols-[220px_1fr]">
+            <aside className="border-y border-black/10 py-5 lg:border-y-0 lg:border-r lg:py-3 lg:pr-6">
+              <p className="text-[10px] tracking-[0.18em] text-black/35 uppercase">Ürün aileleri</p>
+              <nav className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm lg:grid-cols-1" aria-label="Ürün aileleri">
+                {categories.map((category) => (
+                  <a key={category.id} href="#koleksiyonlar" className="border-b border-black/10 py-2 text-black/65 transition hover:text-[#c76d00]">
+                    {category.name}
+                  </a>
+                ))}
+              </nav>
+            </aside>
+
             <div>
-              <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Medical portfolio / 2026</p>
-              <p className="mt-5 text-sm leading-6 text-black/50">KAF Grup ürünlerini kategori, kullanım alanı ve marka ailesi üzerinden keşfedin.</p>
-            </div>
-            <div className="space-y-2 text-xs text-black/45">
-              <p>06 ürün ailesi</p>
-              <p>50+ ihracat ülkesi</p>
-              <p>OEM / Private Label</p>
-            </div>
-          </aside>
-
-          <div className="flex min-w-0 flex-col">
-            <div className="grid gap-6 border-b border-black/10 px-5 py-7 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-8">
-              <div className="lg:col-span-7">
-                <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">KAF Medical Collection</p>
-                <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-[3.8rem]">
-                  Ürünleri hızlı keşfetmek için tasarlanmış dijital portföy.
-                </h1>
-              </div>
-              <div className="flex items-end lg:col-span-4 lg:col-start-9">
-                <p className="max-w-md text-sm leading-6 text-black/55">Dezenfeksiyon, medikal jel ve hasta bakım ürünleri; satın alma ekiplerinin aradığı bilgiye doğrudan ulaşabileceği sade bir katalog yapısında.</p>
-              </div>
-            </div>
-
-            <div className="grid flex-1 lg:grid-cols-[1.25fr_.75fr]">
-              <figure className="relative min-h-[360px] overflow-hidden border-b border-black/10 bg-[#ddd5c8] lg:min-h-0 lg:border-b-0 lg:border-r">
-                <Image src={featured[0].image} alt={featured[0].name} fill priority sizes="(max-width:1024px) 100vw, 60vw" className="object-contain p-10 sm:p-14 lg:p-16" />
-                <figcaption className="absolute inset-x-5 bottom-5 border-t border-black/15 pt-4 sm:inset-x-8 sm:bottom-7">
-                  <div className="flex items-center justify-between gap-4 text-[10px] tracking-[0.15em] text-black/45 uppercase"><span>{featured[0].brand}</span><span>Featured</span></div>
-                  <p className="mt-2 text-2xl font-semibold">{featured[0].name}</p>
-                </figcaption>
-              </figure>
-
-              <div className="grid grid-cols-2 lg:grid-cols-1">
-                {featured.slice(1, 3).map((item, index) => (
-                  <article key={item.id} className={`relative min-h-[220px] overflow-hidden border-b border-black/10 ${index === 0 ? "bg-[#dce8e5]" : "bg-[#171717] text-white"}`}>
-                    <Image src={item.image} alt={item.name} fill sizes="(max-width:1024px) 50vw, 35vw" className="object-contain p-8" />
-                    <span className={`absolute left-4 top-4 text-[9px] tracking-[0.16em] uppercase ${index === 0 ? "text-black/40" : "text-white/35"}`}>{item.brand}</span>
+              <div className="grid min-h-[420px] overflow-hidden border border-black/10 bg-white sm:grid-cols-2 lg:grid-cols-4">
+                {heroProducts.map((product, index) => (
+                  <article key={product.id} className={`relative flex min-h-[300px] flex-col justify-between p-5 ${index ? "border-t border-black/10 sm:border-l sm:border-t-0" : ""} ${index > 1 ? "sm:border-t lg:border-t-0" : ""}`}>
+                    <div className="flex items-center justify-between text-[9px] tracking-[0.16em] text-black/35 uppercase">
+                      <span>{product.brand}</span>
+                      <span>0{index + 1}</span>
+                    </div>
+                    <div className="relative h-52 sm:h-60">
+                      <Image src={product.image} alt={product.name} fill priority={index === 0} sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw" className="object-contain p-3" />
+                    </div>
+                    <div className="border-t border-black/10 pt-4">
+                      <h2 className="text-base font-semibold leading-snug">{product.name}</h2>
+                    </div>
                   </article>
                 ))}
-                <a href="#koleksiyonlar" className="col-span-2 flex min-h-[110px] items-center justify-between bg-[#c96f00] px-5 text-sm font-semibold lg:col-span-1">
-                  Tüm ürün ailelerini gör <ArrowRight className="size-4" />
-                </a>
+              </div>
+              <div className="mt-3 flex flex-col gap-3 border-t border-black/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs text-black/45">50+ ülkeye ihracat · GMP belgeli üretim · OEM / Private Label</p>
+                <a href="#koleksiyonlar" className="inline-flex items-center gap-2 text-sm font-semibold text-[#a95700]">Tüm portföyü incele <ArrowRight className="size-4" /></a>
               </div>
             </div>
           </div>
@@ -63,19 +66,51 @@ export function HomeSections() {
 
       <section id="koleksiyonlar" className="bg-white text-black">
         <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-3">
-              <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Koleksiyonlar</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em]">Klinik ihtiyaca göre ürün aileleri.</h2>
+          <div className="mb-9 grid gap-6 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Ürün kategorileri</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">İhtiyaca göre doğru ürün ailesine ulaşın.</h2>
             </div>
-            <div className="lg:col-span-9">
-              <div className="border-t border-black/15">
-                {categories.map((item, index) => (
-                  <article key={item.id} className="grid gap-4 border-b border-black/15 py-5 sm:grid-cols-[44px_1fr_150px_28px] sm:items-center">
-                    <span className="text-xs text-[#b96100]">{String(index + 1).padStart(2, "0")}</span>
-                    <div><p className="text-[10px] tracking-[0.14em] text-black/35 uppercase">{item.brand}</p><h3 className="mt-1 text-lg font-semibold">{item.name}</h3><p className="mt-1 max-w-xl text-sm leading-5 text-black/45">{item.summary}</p></div>
-                    <div className="relative hidden h-20 bg-[#f2efe9] sm:block"><Image src={item.image} alt="" fill sizes="150px" className="object-contain p-3" /></div>
-                    <ArrowUpRight className="hidden size-4 text-black/30 sm:block" />
+            <div className="lg:col-span-5 lg:col-start-8">
+              <p className="text-sm leading-6 text-black/50">Her kategori, klinik kullanım bağlamı ve marka ailesiyle birlikte açıklanır; kullanıcı uzun ürün listelerinde kaybolmaz.</p>
+            </div>
+          </div>
+
+          <div className="grid gap-x-8 border-t border-black/15 md:grid-cols-2">
+            {categories.map((item, index) => (
+              <article key={item.id} className="grid grid-cols-[46px_1fr_92px] items-center gap-4 border-b border-black/15 py-5">
+                <span className="text-xs text-[#b96100]">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <p className="text-[10px] tracking-[0.12em] text-black/35 uppercase">{item.brand}</p>
+                  <h3 className="mt-1 text-lg font-semibold leading-snug">{item.name}</h3>
+                  <p className="mt-2 text-sm leading-5 text-black/45">{item.summary}</p>
+                </div>
+                <div className="relative h-20 bg-[#f5f3ee]"><Image src={item.image} alt="" fill sizes="92px" className="object-contain p-2" /></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="urunler" className="bg-[#efede7] text-black">
+        <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Öne çıkan ürünler</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Ürünü büyük görselle değil, doğru bilgiyle öne çıkarın.</h2>
+              <p className="mt-4 max-w-sm text-sm leading-6 text-black/50">Ürün adı, kullanım amacı ve marka bilgisi ilk bakışta okunur; görsel destekleyici rol üstlenir.</p>
+            </div>
+            <div className="lg:col-span-8">
+              <div className="divide-y divide-black/15 border-y border-black/15">
+                {selected.map((item, index) => (
+                  <article key={item.id} className="grid gap-5 py-6 sm:grid-cols-[42px_1fr_180px] sm:items-center">
+                    <span className="text-xs text-[#b96100]">0{index + 1}</span>
+                    <div>
+                      <p className="text-[10px] tracking-[0.14em] text-black/35 uppercase">{item.brand}</p>
+                      <h3 className="mt-1 text-xl font-semibold">{item.name}</h3>
+                      <p className="mt-2 max-w-xl text-sm leading-6 text-black/50">{item.summary}</p>
+                    </div>
+                    <div className="relative h-32 bg-white"><Image src={item.image} alt={item.name} fill sizes="180px" className="object-contain p-4" /></div>
                   </article>
                 ))}
               </div>
@@ -84,38 +119,37 @@ export function HomeSections() {
         </div>
       </section>
 
-      <section id="urunler" className="bg-[#151515] text-white">
-        <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-          <div className="mb-10 flex flex-col gap-5 border-b border-white/12 pb-6 sm:flex-row sm:items-end sm:justify-between">
-            <div><p className="text-[10px] tracking-[0.2em] text-[#e58a1b] uppercase">Seçili ürünler</p><h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em]">Ürün bilgisini görselin gerisinde bırakmayan düzen.</h2></div>
-            <p className="max-w-sm text-sm leading-6 text-white/40">Büyük görsel alanlar, kısa ürün özeti ve marka ayrımı. Satın alma odaklı, sakin ve okunaklı.</p>
-          </div>
-          <div className="grid gap-px bg-white/10 lg:grid-cols-4">
-            {featured.map((item) => (
-              <article key={item.id} className="bg-[#151515]">
-                <div className="relative aspect-[4/5] bg-[#ece8df]"><Image src={item.image} alt={item.name} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-contain p-8" /></div>
-                <div className="p-5"><p className="text-[10px] tracking-[0.14em] text-[#e58a1b] uppercase">{item.brand}</p><h3 className="mt-2 text-lg font-semibold">{item.name}</h3><p className="mt-2 text-sm leading-5 text-white/40">{item.summary}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="oem" className="bg-[#c96f00] text-[#151515]">
-        <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[.9fr_1.1fr]">
-          <div className="relative min-h-[380px] bg-[#b96300] lg:min-h-[560px]"><Image src={oemContent.image} alt="KAF Grup OEM / Private Label" fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" /></div>
-          <div className="flex flex-col justify-between p-6 sm:p-10 lg:p-14">
-            <div><p className="text-[10px] tracking-[0.2em] uppercase">OEM / Private Label</p><h2 className="mt-5 max-w-xl text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Markanız için ürün geliştirme ve üretim.</h2><p className="mt-5 max-w-xl text-base leading-7 text-black/65">{oemContent.summary}</p></div>
-            <a href={`mailto:${company.contact.email}`} className="mt-10 inline-flex items-center gap-2 text-sm font-semibold">OEM görüşmesi başlat <ArrowUpRight className="size-4" /></a>
+      <section id="oem" className="bg-[#161616] text-white">
+        <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5">
+              <p className="text-[10px] tracking-[0.2em] text-[#e58a1b] uppercase">OEM / Private Label</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">Markanız için geliştirme ve üretim desteği.</h2>
+              <p className="mt-5 max-w-lg text-sm leading-6 text-white/45">{oemContent.summary}</p>
+              <a href={`mailto:${company.contact.email}`} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#f0a33e]">OEM görüşmesi başlat <ArrowUpRight className="size-4" /></a>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="relative aspect-[16/8] overflow-hidden bg-[#222]"><Image src={oemContent.image} alt="KAF Grup OEM / Private Label" fill sizes="(max-width:1024px) 100vw, 58vw" className="object-cover" /></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="global" className="bg-[#f4f0e8] text-black">
+      <section id="global" className="bg-white text-black">
         <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-10 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-4"><p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Global görünürlük</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">Ürün portföyünün arkasında uluslararası sektör deneyimi.</h2></div>
-            <div className="grid gap-3 sm:grid-cols-3 lg:col-span-8">{fairs.slice(0,3).map((fair) => <figure key={fair.id}><div className="relative aspect-[4/3] overflow-hidden bg-[#ddd]"><Image src={fair.image} alt={fair.name} fill sizes="(max-width:768px) 100vw, 25vw" className="object-cover" /></div><figcaption className="mt-2 flex justify-between gap-3 text-xs"><strong>{fair.name}</strong><span className="text-black/40">{fair.location}</span></figcaption></figure>)}</div>
+            <div className="lg:col-span-4">
+              <p className="text-[10px] tracking-[0.2em] text-[#b96100] uppercase">Global görünürlük</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">Ürün portföyünün arkasında uluslararası sektör deneyimi.</h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3 lg:col-span-8">
+              {fairs.slice(0, 3).map((fair) => (
+                <figure key={fair.id}>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#ddd]"><Image src={fair.image} alt={fair.name} fill sizes="(max-width:768px) 100vw, 25vw" className="object-cover" /></div>
+                  <figcaption className="mt-3 flex justify-between gap-3 text-xs"><strong>{fair.name}</strong><span className="text-black/40">{fair.location}</span></figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/taslak2/SiteFooter";
 import { HomeSections } from "@/components/taslak2/HomeSections";
 
 export const metadata: Metadata = {
-  title: "Taslak 2 — Editoryal Ürün Dünyası",
+  title: "Taslak 2 — Medikal Ürün Kataloğu",
   description:
-    "KAF Grup editoryal ürün dünyası: asimetrik katalog, ürün hikâyeleri ve fuar galerisi.",
+    "KAF Grup medikal ürün kataloğu: ürün aileleri, seçili ürünler, OEM ve global görünürlük.",
   robots: { index: false, follow: false },
 };
 

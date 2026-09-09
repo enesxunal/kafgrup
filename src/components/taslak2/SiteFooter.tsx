@@ -8,7 +8,7 @@ export function SiteFooter() {
           KAF Grup
         </p>
         <p className="mt-2 text-sm tracking-[0.2em] text-white/40 uppercase">
-          Dijital katalog · Sayı 01
+          Medikal ürün portföyü
         </p>
         <div className="mt-10 flex flex-col gap-6 border-t border-white/15 pt-8 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-sm text-base leading-relaxed text-white/55">
@@ -20,7 +20,7 @@ export function SiteFooter() {
           </p>
         </div>
         <p className="mt-10 text-xs text-white/30">
-          © {new Date().getFullYear()} · Editoryal ürün taslağı
+          © {new Date().getFullYear()} · KAF Grup medikal ürün kataloğu
         </p>
       </div>
     </footer>
